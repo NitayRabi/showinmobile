@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <title>ShowInMobile - Showcase a website in mobile</title>
+        <title>ShowInMobile - Showcase Websites in Mobile View</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content="Nitay Rabinovich" />
