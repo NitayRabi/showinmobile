@@ -1,5 +1,6 @@
 "use client";
 import "@radix-ui/themes/styles.css";
+import "./globals.css";
 import dynamic from "next/dynamic";
 
 import Emulator from "./emulator";
