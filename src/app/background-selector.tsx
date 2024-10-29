@@ -1,7 +1,6 @@
 // components/BackgroundSelector.js
 
 import { useRef, useState } from "react";
-import { useDropzone } from "react-dropzone";
 import ColorPicker from "react-best-gradient-color-picker";
 import { useAtom } from "jotai";
 import { bgAtom } from "./state";

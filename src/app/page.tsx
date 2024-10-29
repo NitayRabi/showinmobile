@@ -1,12 +1,11 @@
 "use client";
-import React from "react";
 import "@radix-ui/themes/styles.css";
 import dynamic from "next/dynamic";
 
 import Emulator from "./emulator";
 import { Flex, Theme } from "@radix-ui/themes";
 import { useAtom } from "jotai";
-import { bgAtom, logoAtom } from "./state";
+import { bgAtom } from "./state";
 import Toolbar from "./toolbar";
 import Logo from "./logo";
 import * as Toast from "@radix-ui/react-toast";

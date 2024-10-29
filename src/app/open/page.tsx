@@ -2,11 +2,11 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEncodedState } from "../state"; // adjust path if necessary
 
-export default function OpenPage() {
+function OpenPageInternal() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [, setState] = useEncodedState();
@@ -35,5 +35,13 @@ export default function OpenPage() {
     <div>
       <p>Processing...</p>
     </div>
+  );
+}
+
+export default function OpenPage() {
+  return (
+    <Suspense>
+      <OpenPageInternal />
+    </Suspense>
   );
 }

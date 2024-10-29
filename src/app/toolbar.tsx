@@ -12,25 +12,10 @@ import {
 } from "@radix-ui/themes";
 import BackgroundSelector from "./background-selector";
 import { useAtom } from "jotai";
-import {
-  bgAtom,
-  deviceAtom,
-  logoAtom,
-  urlAtom,
-  useEncodedState,
-} from "./state";
-import {
-  BiFullscreen,
-  BiImage,
-  BiShare,
-  BiShareAlt,
-  BiSolidImage,
-  BiSolidShareAlt,
-} from "react-icons/bi";
-import { CiLink } from "react-icons/ci";
+import { deviceAtom, logoAtom, urlAtom, useEncodedState } from "./state";
+import { BiFullscreen, BiImage, BiSolidImage } from "react-icons/bi";
 
 import { useFullscreen } from "./hooks/useFullscreen";
-import { CgShare } from "react-icons/cg";
 import { LiaLinkSolid } from "react-icons/lia";
 import * as Toast from "@radix-ui/react-toast";
 import { useState } from "react";
