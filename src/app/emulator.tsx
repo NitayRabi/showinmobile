@@ -5,6 +5,7 @@ import { KnownDevices } from "./device";
 import { Box, Flex, Skeleton, Text } from "@radix-ui/themes";
 import { useAtom } from "jotai";
 import { deviceAtom, urlAtom } from "./state";
+import { IoPhonePortraitOutline } from "react-icons/io5";
 
 const useDebounce = (value: string, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -95,10 +96,17 @@ export default function Emulator() {
             <Flex
               className="absolute w-full h-full"
               justify="center"
+              direction="column"
               align="center"
             >
               <Text size="7" color="brown" className="font-extralight">
-                Enter a URL to get started
+                Enter a URL to see it on mobile
+              </Text>
+              <Text color="brown" className="p-8">
+                <IoPhonePortraitOutline
+                  className="custom-stroke-12"
+                  size={96}
+                />
               </Text>
             </Flex>
 

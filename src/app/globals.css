@@ -135,3 +135,11 @@ button {
 .ToastAction {
 	grid-area: action;
 }
+
+.custom-stroke-12 path {
+  stroke-width: 12; /* override the stroke width */
+}
+
+.custom-stroke-12 rect {
+  stroke-width: 12; /* override the stroke width */
+}
