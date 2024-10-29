@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { KnownDevices } from "./device";
-import { Box, Flex, Skeleton } from "@radix-ui/themes";
+import { Box, Flex, Skeleton, Text } from "@radix-ui/themes";
 import { useAtom } from "jotai";
 import { deviceAtom, urlAtom } from "./state";
 
@@ -88,7 +88,22 @@ export default function Emulator() {
             src={debouncedUrl}
           />
         ) : (
-          <Skeleton width="100%" height="100%" />
+          <Box
+            style={{ background: "#fffcf5" }}
+            className="w-full h-full relative"
+          >
+            <Flex
+              className="absolute w-full h-full"
+              justify="center"
+              align="center"
+            >
+              <Text size="7" color="brown" className="font-extralight">
+                Enter a URL to get started
+              </Text>
+            </Flex>
+
+            <Skeleton width="100%" height="100%" />
+          </Box>
         )}
       </Box>
     </Flex>
