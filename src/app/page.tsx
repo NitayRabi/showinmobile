@@ -10,9 +10,29 @@ import { bgAtom } from "./state";
 import Toolbar from "./toolbar";
 import Logo from "./logo";
 import * as Toast from "@radix-ui/react-toast";
+import { useEffect } from "react";
 
 function Home() {
   const [bg] = useAtom(bgAtom);
+
+  useEffect(() => {
+    // Check if the service worker can be registered
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/service-worker.js", { scope: "/" })
+        .then((registration) => {
+          console.log(
+            "Service Worker registered with scope:",
+            registration.scope
+          );
+        })
+        .catch((error) => {
+          console.error("Service Worker registration failed:", error);
+        });
+    } else {
+      console.error("Service Worker not supported");
+    }
+  }, []);
 
   return (
     <Toast.Provider swipeDirection="right">

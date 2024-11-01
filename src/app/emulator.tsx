@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { KnownDevices } from "./device";
 import { Box, Flex, Skeleton, Text } from "@radix-ui/themes";
 import { useAtom } from "jotai";
 import { deviceAtom, urlAtom } from "./state";
 import { IoPhonePortraitOutline } from "react-icons/io5";
+import XFrameBypassWrapper from "./xframe";
+import ProxyIframe from "./proxy-iframe";
+import useIframeObserver from "./hooks/useIframeObserver";
 
 const useDebounce = (value: string, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -40,10 +43,17 @@ const isUrl = (url: string) => {
 };
 
 export default function Emulator() {
+  const containerRef = useRef(null);
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
   const [url] = useAtom(urlAtom);
   const [selectedDevice] = useAtom(deviceAtom);
 
   const debouncedUrl = useDebounce(toUrl(url), 500);
+
+  useIframeObserver(containerRef, "api/proxy?url=" + debouncedUrl);
+
   const device = KnownDevices[selectedDevice];
 
   // Get viewport dimensions
@@ -67,7 +77,7 @@ export default function Emulator() {
   }
 
   return (
-    <Flex justify="center" align="center">
+    <Flex justify="center" align="center" ref={containerRef}>
       <Box
         style={{
           width: `${width}px`, // Set calculated width
@@ -81,14 +91,19 @@ export default function Emulator() {
       >
         {isUrl(debouncedUrl) ? (
           <iframe
+            ref={iframeRef}
             style={{
               width: "100%",
               height: "100%",
               border: "none", // Optional for aesthetics
             }}
-            src={debouncedUrl}
+            src={"api/proxy?url=" + debouncedUrl}
           />
         ) : (
+          // <ProxyIframe src={debouncedUrl} />
+          // <XFrameBypassWrapper src={debouncedUrl} />
+          // <ProxyIframe src={debouncedUrl} />
+
           <Box
             style={{ background: "#fffcf5" }}
             className="w-full h-full relative"
