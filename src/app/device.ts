@@ -1,9 +1,9 @@
 /**
+ * Ported from puppeteer-core
  * @license
  * Copyright 2017 Google Inc.
  * SPDX-License-Identifier: Apache-2.0
  */
-
 import type { Viewport } from "./viewport";
 
 /**
